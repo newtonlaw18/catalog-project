@@ -1,0 +1,23 @@
+<h3>Product Catalog</h3>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price (SGD)</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @products.each do |product| %>
+    <tr>
+      <th scope="row"><%= product.id %></th>
+      <td><%= product.name %></td>
+      <td><%= product.description %></td>
+      <td>$ <%= product.price %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
