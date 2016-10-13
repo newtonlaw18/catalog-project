@@ -6,18 +6,20 @@ class ProductsController < ApplicationController
 
 	def new
 		@product = Product.new
-		@category_product = CategoryProduct.new
-		
+		@category = Category.all
+
 	end
 
 	def create
-		binding.pry
 		@product = Product.new(product_params)
 		@product.save
+		params[:category_ids].each do |cat_id|
+			CategoryProduct.create(:product_id => @product.id, category_id: cat_id)
+		end
 		# @category_product = CategoryProduct.new
 		# @category_product.product_id = @product.id
 		# @category_product.category_id = params[:category_id]
-		@category_product = CategoryProduct.create(:product_id => @product.id, :category_id => params[:category_ids])
+		
 		redirect_to root_path
 	end
 

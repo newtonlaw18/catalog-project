@@ -24,10 +24,14 @@
 		</p> -->
 		<%# end %>
 
-		<% Category.all.each do |category| %>
-			<%= check_box_tag 'category_ids', category.id -%> 
-        	<%= category.kind %>
-		<% end %>
+		<ul>
+		  <% @category.each do |category| %>
+		      <li>
+		        <%= check_box_tag 'category_ids[]', category.id -%>
+		        <%= h category.kind -%>
+		      </li>
+		  <% end %>
+		</ul>
 
 		<%= f.submit %>
 	<% end %>
